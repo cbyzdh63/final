@@ -1,0 +1,111 @@
+sobel
+i1=imread('test1.tif');
+i=i1(:,:,1);
+i_can1=edge(i,'sobel');
+figure;
+subplot(1,2,1),imshow(i),title('orininal image');
+subplot(1,2,2),imshow(i_can1),title('sobel image1');
+
+i2=imread('test2.png');
+i_can2=edge(i2,'sobel');
+figure;
+subplot(1,2,1),imshow(i2),title('orininal image');
+subplot(1,2,2),imshow(i_can2),title('sobel image2');
+
+i3=imread('test3.jpg');
+i_can3=edge(i3,'sobel');
+figure;
+subplot(1,2,1),imshow(i3),title('orininal image');
+subplot(1,2,2),imshow(i_can3),title('sobel image3');
+
+i4=imread('test4.bmp');
+i_can4=edge(i4,'sobel');
+figure;
+subplot(1,2,1),imshow(i4),title('orininal image');
+subplot(1,2,2),imshow(i_can4),title('sobel image4');
+
+i5=imread('test2.png');
+i_can5=edge(i5,'sobel');
+figure;
+subplot(1,2,1),imshow(i5),title('orininal image');
+subplot(1,2,2),imshow(i_can5),title('sobel image5');
+
+i6=imread('test6.jpg');
+i_can6=edge(i6,'sobel');
+figure;
+subplot(1,2,1),imshow(i6),title('orininal image');
+subplot(1,2,2),imshow(i_can6),title('sobel image6');
+
+canny
+i1=imread('test1.tif');
+i=i1(:,:,1);
+i_can1=edge(i,'canny');
+figure;
+subplot(1,2,1),imshow(i),title('orininal image');
+subplot(1,2,2),imshow(i_can1),title('canny image1');
+
+i2=imread('test2.png');
+i_can2=edge(i2,'canny');
+figure;
+subplot(1,2,1),imshow(i2),title('orininal image');
+subplot(1,2,2),imshow(i_can2),title('canny image2');
+
+i3=imread('test3.jpg');
+i_can3=edge(i3,'canny');
+figure;
+subplot(1,2,1),imshow(i3),title('orininal image');
+subplot(1,2,2),imshow(i_can3),title('canny image3');
+
+i4=imread('test4.bmp');
+i_can4=edge(i4,'canny');
+figure;
+subplot(1,2,1),imshow(i4),title('orininal image');
+subplot(1,2,2),imshow(i_can4),title('canny image4');
+
+i5=imread('test2.png');
+i_can5=edge(i5,'canny');
+figure;
+subplot(1,2,1),imshow(i5),title('orininal image');
+subplot(1,2,2),imshow(i_can5),title('canny image5');
+
+i6=imread('test6.jpg');
+i_can6=edge(i6,'canny');
+figure;
+subplot(1,2,1),imshow(i6),title('orininal image');
+subplot(1,2,2),imshow(i_can6),title('canny image6');
+
+i=imread('test1.tif');
+BW=edge(i,'sobel');
+figure,imshow(BW),title('canny image2');
+[H, theta, rho]= hough(BW,'Theta',-80:0.1:80);      
+peak=houghpeaks(H,5); %求极值点   
+lines=houghlines(BW,theta,rho,peak); %返回原图直线信息 
+figure,imshow(BW,[]),title('Hough Transform Detect Result canny  '),hold on    
+for k=1:length(lines)    
+    xy=[lines(k).point1;lines(k).point2];    
+    plot(xy(:,1),xy(:,2),'LineWidth',4);
+end
+i=imread('test3.jpg');
+BW=edge(i,'sobel');
+figure,imshow(BW),title('canny image2');
+[H, theta, rho]= hough(BW,'Theta',-50:0.1:50);      
+peak=houghpeaks(H,5); %求极值点   
+lines=houghlines(BW,theta,rho,peak); %返回原图直线信息 
+figure,imshow(BW,[]),title('Hough Transform Detect Result canny  '),hold on    
+for k=1:length(lines)    
+    xy=[lines(k).point1;lines(k).point2];    
+    plot(xy(:,1),xy(:,2),'LineWidth',4);
+end
+i=imread('test3.jpg');
+BW=edge(i,'sobel');
+figure,imshow(BW),title('canny image2');
+[H, theta, rho]= hough(BW,'Theta',-80:100:80);      
+peak=houghpeaks(H,5); %求极值点   
+lines=houghlines(BW,theta,rho,peak); %返回原图直线信息 
+figure,imshow(BW,[]),title('Hough Transform Detect Result canny  '),hold on    
+for k=1:length(lines)    
+    xy=[lines(k).point1;lines(k).point2];    
+    plot(xy(:,1),xy(:,2),'LineWidth',4);
+end
+
+
